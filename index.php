@@ -43,7 +43,7 @@
             $job = $_POST['job'];
             $date = date("Y-m-d");
             // Insert data
-            $sql_insert = "INSERT INTO Penggunas (name, email, job, date) 
+            $sql_insert = "INSERT INTO Penggunas (Nama, Email, Pekerjaan, Tanggal) 
                         VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
@@ -68,10 +68,10 @@
                 echo "<th>Job</th>";
                 echo "<th>Date</th></tr>";
                 foreach($registrants as $registrant) {
-                    echo "<tr><td>".$registrant['name']."</td>";
-                    echo "<td>".$registrant['email']."</td>";
-                    echo "<td>".$registrant['job']."</td>";
-                    echo "<td>".$registrant['date']."</td></tr>";
+                    echo "<tr><td>".$registrant['Nama']."</td>";
+                    echo "<td>".$registrant['Email']."</td>";
+                    echo "<td>".$registrant['Pekerjaan']."</td>";
+                    echo "<td>".$registrant['Tanggal']."</td></tr>";
                 }
                 echo "</table>";
             } else {
