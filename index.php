@@ -47,10 +47,10 @@
             if (isset($_POST['submit'])){
 
                 try {
-                    $name = $_POST['nama'];
+                    $nama = $_POST['nama'];
                     $email = $_POST['email'];
-                    $job = $_POST['pekerjaan'];
-                    $date = date("Y-m-d");
+                    $pekerjaan = $_POST['pekerjaan'];
+                    $tanggal = date("Y-m-d");
 
                     $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
                     VALUES ($nama, $email, $pekerjaan, $tanggal)";
