@@ -52,7 +52,7 @@
                     $pekerjaan = $_POST['pekerjaan'];
                     $tanggal = date("Y-m-d");
 
-                    $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
+                    $sql = "INSERT INTO Penggunas (Nama, Email, Pekerjaan, Tanggal)
                     VALUES ($nama, $email, $pekerjaan, $tanggal)";
                     $conn->exec($sql);
                     echo "New record created successfully"; 
@@ -64,7 +64,7 @@
 
             else if (isset($_POST['load_data'])) {
                 try {
-                    $sql_select = "SELECT * FROM Pengguna";
+                    $sql_select = "SELECT * FROM Penggunas";
                     $stmt = $conn->query($sql_select);
                     $registrants = $stmt->fetchAll(); 
                     if(count($registrants) > 0) {
