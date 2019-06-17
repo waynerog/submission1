@@ -86,55 +86,6 @@
                     echo "Failed: " . $e;
                 }
             }
-            /*if (isset($_POST['submit'])){
-
-                $nama = $_POST['nama'];
-                $email = $_POST['email'];
-                $pekerjaan = $_POST['pekerjaan'];
-                $tanggal = date("Y-m-d");
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-                $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
-                VALUES ($nama, $email, $pekerjaan, $tanggal)";
-
-                if (mysqli_query($conn, $sql)) {
-                    echo "New record created successfully";
-                } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                }
-            } else if (isset($_POST['load_data'])) {
-                try {
-                    $sql_select = "SELECT * FROM Pengguna";
-                    $stmt = $conn->query($sql_select);
-                    $registrants = $stmt->fetchAll(); 
-                    if(count($registrants) > 0) {
-                        echo "<h2>People who are registered:</h2>";
-                        echo "<table>";
-                        echo "<tr><th>Name</th>";
-                        echo "<th>Email</th>";
-                        echo "<th>Job</th>";
-                        echo "<th>Date</th></tr>";
-                        foreach($registrants as $registrant) {
-                            echo "<tr><td>".$registrant['Nama']."</td>";
-                            echo "<td>".$registrant['Email']."</td>";
-                            echo "<td>".$registrant['Pekerjaan']."</td>";
-                            echo "<td>".$registrant['Tanggal']."</td></tr>";
-                        }
-                        echo "</table>";
-                    } else {
-                        echo "<h3>No one is currently registered.</h3>";
-                    }
-                } catch(Exception $e) {
-                    echo "Failed: " . $e;
-                }
-            }*/
-
 
             mysqli_close($conn);
             ?> 
