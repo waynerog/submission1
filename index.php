@@ -55,10 +55,10 @@
                     $sql = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal)
                     VALUES ('', ?, ?, ?, ?)";
                     $state = $conn->prepare($sql);
-                    $stmt->bindValue(1, $nama);
-                    $stmt->bindValue(2, $email);
-                    $stmt->bindValue(3, $pekerjaan);
-                    $stmt->bindValue(4, $tanggal);
+                    $stmt->bindValue(2, $nama);
+                    $stmt->bindValue(3, $email);
+                    $stmt->bindValue(4, $pekerjaan);
+                    $stmt->bindValue(5, $tanggal);
                     $state->execute();
                     echo "New record created successfully"; 
                 } catch(Exception $e) {
