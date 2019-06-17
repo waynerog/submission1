@@ -28,7 +28,7 @@
  <?php
     $host = "rifazures.database.windows.net";
     $user = "waynerog";
-    $pass = "Alkemenes1197";
+    $pass = "Alkmenes1197";
     $db = "Pendaftaran";
     try {
         $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
