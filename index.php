@@ -53,8 +53,12 @@
                     $tanggal = date("Y-m-d");
 
                     $sql = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal)
-                    VALUES ('', $nama, $email, $pekerjaan, $tanggal)";
+                    VALUES ('', ?, ?, ?, ?)";
                     $state = $conn->prepare($sql);
+                    $stmt->bindValue(1, $nama);
+                    $stmt->bindValue(2, $email);
+                    $stmt->bindValue(3, $pekerjaan);
+                    $stmt->bindValue(4, $tanggal);
                     $state->execute();
                     echo "New record created successfully"; 
                 } catch(Exception $e) {
