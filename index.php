@@ -52,8 +52,8 @@
                     $pekerjaan = $_POST['pekerjaan'];
                     $tanggal = date("Y-m-d");
 
-                    $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
-                    VALUES ($nama, $email, $pekerjaan, $tanggal)";
+                    $sql = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal)
+                    VALUES ('', $nama, $email, $pekerjaan, $tanggal)";
                     $state = $conn->prepare($sql);
                     $state->execute();
                     echo "New record created successfully"; 
