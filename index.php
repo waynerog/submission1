@@ -47,9 +47,9 @@
             if (isset($_POST['submit'])){
 
                 try {
-                    $name = $_POST['name'];
+                    $name = $_POST['nama'];
                     $email = $_POST['email'];
-                    $job = $_POST['job'];
+                    $job = $_POST['pekerjaan'];
                     $date = date("Y-m-d");
 
                     $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
