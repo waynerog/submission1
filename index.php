@@ -44,7 +44,7 @@
             $date = date("Y-m-d");
             // Insert data
             $sql_insert = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal) 
-                        VALUES (1,?,?,?,?)";
+                        VALUES (2,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
