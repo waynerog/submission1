@@ -43,10 +43,7 @@
                 die(print_r($e));
             }
 
-            // SQL Server Extension Sample Code:
-            $connectionInfo = array("UID" => "waynerog@rifazures", "pwd" => "Alkmenes1197", "Database" => "Pendaftaran", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-            $serverName = "tcp:rifazures.database.windows.net,1433";
-            $conn = sqlsrv_connect($serverName, $connectionInfo);
+            
             if (isset($_POST['submit'])){
 
                 try {
