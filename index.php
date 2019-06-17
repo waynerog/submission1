@@ -30,20 +30,34 @@
             $username = "waynerog";
             $password = "Alkmenes1197";
             $dbname = "Pendaftaran";
-            if (isset($_POST['submit'])){
+            
+
+                
+                // PHP Data Objects(PDO) Sample Code:
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                    // set the PDO error mode to exception
+                    $conn = new PDO("sqlsrv:server = tcp:rifazures.database.windows.net,1433; Database = Pendaftaran", "waynerog", "Alkmenes1197");
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                }
+                catch (PDOException $e) {
+                    print("Error connecting to SQL Server.");
+                    die(print_r($e));
+                }
+
+                // SQL Server Extension Sample Code:
+                $connectionInfo = array("UID" => "waynerog@rifazures", "pwd" => "Alkmenes1197", "Database" => "Pendaftaran", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+                $serverName = "tcp:rifazures.database.windows.net,1433";
+                $conn = sqlsrv_connect($serverName, $connectionInfo);
+            if (isset($_POST['submit'])){
+
+                try {
                     $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
                     VALUES ($nama, $email, $pekerjaan, $tanggal)";
                     $conn->exec($sql);
-                    echo "New record created successfully";
+                    echo "New record created successfully"; 
+                } catch(Exception $e) {
+                    echo "Failed: " . $e;
                 }
-                catch(PDOException $e)
-                {
-                    echo $sql . "<br>" . $e->getMessage();
-                }
+                echo "<h3>Your're registered!</h3>";
             }
 
             else if (isset($_POST['load_data'])) {
