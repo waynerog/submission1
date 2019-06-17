@@ -54,7 +54,7 @@
 
                     $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
                     VALUES ($nama, $email, $pekerjaan, $tanggal)";
-
+                    $conn->exec($sql);
                     echo "New record created successfully"; 
                 } catch(Exception $e) {
                     echo "Failed: " . $e;
