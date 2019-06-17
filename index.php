@@ -47,12 +47,13 @@
             // Insert data
             $sql_insert = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal) 
                         VALUES ($name,$email,$job,$date)";
+         if(mysqli_query($conn, $sql_insert)){
+            echo "<h3>Your're registered!</h3>";
+        }
         } catch(Exception $e) {
             echo "Failed: " . $e;
         }
-        if(mysqli_query($conn, $sql_insert)){
-            echo "<h3>Your're registered!</h3>";
-        }
+        
     } else if (isset($_POST['load_data'])) {
         try {
             $sql_select = "SELECT * FROM Pengguna";
