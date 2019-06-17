@@ -52,14 +52,9 @@
                     $pekerjaan = $_POST['pekerjaan'];
                     $tanggal = date("Y-m-d");
 
-                    $sql = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal)
-                    VALUES (3, ?, ?, ?, ?)";
-                    $state = $conn->prepare($sql);
-                    $stmt->bindValue(2, $nama);
-                    $stmt->bindValue(3, $email);
-                    $stmt->bindValue(4, $pekerjaan);
-                    $stmt->bindValue(5, $tanggal);
-                    $state->execute();
+                    $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
+                    VALUES ($nama, $email, $pekerjaan, $tanggal)";
+
                     echo "New record created successfully"; 
                 } catch(Exception $e) {
                     echo "Failed: " . $e;
