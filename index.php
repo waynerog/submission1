@@ -53,7 +53,7 @@
                     $tanggal = date("Y-m-d");
 
                     $sql = "INSERT INTO Pengguna (ID, Nama, Email, Pekerjaan, Tanggal)
-                    VALUES ('', ?, ?, ?, ?)";
+                    VALUES (3, ?, ?, ?, ?)";
                     $state = $conn->prepare($sql);
                     $stmt->bindValue(2, $nama);
                     $stmt->bindValue(3, $email);
