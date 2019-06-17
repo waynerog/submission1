@@ -30,8 +30,49 @@
             $username = "waynerog";
             $password = "Alkmenes1197";
             $dbname = "Pendaftaran";
-
             if (isset($_POST['submit'])){
+                try {
+                    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                    // set the PDO error mode to exception
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "INSERT INTO Pengguna (Nama, Email, Pekerjaan, Tanggal)
+                    VALUES ($nama, $email, $pekerjaan, $tanggal)";
+                    $conn->exec($sql);
+                    echo "New record created successfully";
+                }
+                catch(PDOException $e)
+                {
+                    echo $sql . "<br>" . $e->getMessage();
+                }
+            }
+
+            else if (isset($_POST['load_data'])) {
+                try {
+                    $sql_select = "SELECT * FROM Pengguna";
+                    $stmt = $conn->query($sql_select);
+                    $registrants = $stmt->fetchAll(); 
+                    if(count($registrants) > 0) {
+                        echo "<h2>People who are registered:</h2>";
+                        echo "<table>";
+                        echo "<tr><th>Name</th>";
+                        echo "<th>Email</th>";
+                        echo "<th>Job</th>";
+                        echo "<th>Date</th></tr>";
+                        foreach($registrants as $registrant) {
+                            echo "<tr><td>".$registrant['Nama']."</td>";
+                            echo "<td>".$registrant['Email']."</td>";
+                            echo "<td>".$registrant['Pekerjaan']."</td>";
+                            echo "<td>".$registrant['Tanggal']."</td></tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "<h3>No one is currently registered.</h3>";
+                    }
+                } catch(Exception $e) {
+                    echo "Failed: " . $e;
+                }
+            }
+            /*if (isset($_POST['submit'])){
 
                 $nama = $_POST['nama'];
                 $email = $_POST['email'];
@@ -78,7 +119,7 @@
                 } catch(Exception $e) {
                     echo "Failed: " . $e;
                 }
-            }
+            }*/
 
 
             mysqli_close($conn);
