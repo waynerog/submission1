@@ -13,6 +13,9 @@
  	table { margin-top: 0.75em; }
  	th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
  	td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
+  
+  .show th {border: 1; padding: 5px;}
+  .show td {border: 1;}
  </style>
  </head>
  <body>
@@ -70,7 +73,7 @@
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
                 echo "<h2>Data inventaris yang telah masuk :</h2>";
-                echo "<table>";
+                echo "<table class='show'>";
                 echo "<tr><th>ID Barang</th>";
                 echo "<th>Nama Barang</th>";
                 echo "<th>Jumlah Barang</th>";
