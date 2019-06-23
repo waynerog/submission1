@@ -71,7 +71,7 @@
             $sql_select = "SELECT * FROM barang";
             $stmt = $conn->query($sql_select);
             $barangs = $stmt->fetchAll(); 
-            if(count($registrants) > 0) {
+            if(count($barangs) > 0) {
                 echo "<h2>Data inventaris yang telah masuk :</h2>";
                 echo "<table class='show'>";
                 echo "<tr><th>ID Barang</th>";
