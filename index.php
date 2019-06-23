@@ -70,7 +70,7 @@
         try {
             $sql_select = "SELECT * FROM barang";
             $stmt = $conn->query($sql_select);
-            $registrants = $stmt->fetchAll(); 
+            $barangs = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
                 echo "<h2>Data inventaris yang telah masuk :</h2>";
                 echo "<table class='show'>";
@@ -78,11 +78,11 @@
                 echo "<th>Nama Barang</th>";
                 echo "<th>Jumlah Barang</th>";
                 echo "<th>Tanggal Masuk</th>";
-                foreach($registrants as $registrant) {
-                    echo "<tr><td>".$registrant['id_barang']."</td>";
-                    echo "<td>".$registrant['nama_barang']."</td>";
-                    echo "<td>".$registrant['jumlah_barang']."</td>";
-                    echo "<td>".$registrant['tanggal_masuk']."</td>";
+                foreach($barangs as $barang) {
+                    echo "<tr><td style='text-align:center;'>".$barang['id_barang']."</td>";
+                    echo "<td>".$barang['nama_barang']."</td>";
+                    echo "<td style='text-align:center;'>".$barang['jumlah_barang']."</td>";
+                    echo "<td style='text-align:center;'>".$barang['tanggal_masuk']."</td>";
                 }
                 echo "</table>";
             } else {
