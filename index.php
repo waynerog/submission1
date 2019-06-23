@@ -52,8 +52,12 @@
             $date = date("Y-m-d");
             // Insert data
             $sql_insert = "INSERT INTO barang (id_barang, nama_barang, jumlah_barang, tanggal_masuk) 
-                        VALUES ('',$name,$qty,$date)";
+                        VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
+            $stmt->bindValue(1, '');
+            $stmt->bindValue(2, $name);
+            $stmt->bindValue(3, $qty);
+            $stmt->bindValue(4, $date);
             $stmt->execute();
         } catch(Exception $e) {
             echo "Failed: " . $e;
@@ -80,7 +84,7 @@
                 }
                 echo "</table>";
             } else {
-                echo "<h3>Belum ada data inventaris yang dimasukkan.</h3>";
+                echo "<h3 style='color: red'>Belum ada data inventaris yang dimasukkan.</h3>";
             }
         } catch(Exception $e) {
             echo "Failed: " . $e;
