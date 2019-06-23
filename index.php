@@ -62,7 +62,7 @@
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
         try {
-            $sql_select = "SELECT * FROM inventaris";
+            $sql_select = "SELECT * FROM barang";
             $stmt = $conn->query($sql_select);
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
