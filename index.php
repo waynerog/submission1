@@ -16,66 +16,71 @@
  </style>
  </head>
  <body>
- <h1>Register here!</h1>
- <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
- <form method="post" action="index.php" enctype="multipart/form-data" >
-       Name  <input type="text" name="name" id="name"/></br></br>
-       Email <input type="text" name="email" id="email"/></br></br>
-       Job <input type="text" name="job" id="job"/></br></br>
-       <input type="submit" name="submit" value="Submit" />
-       <input type="submit" name="load_data" value="Load Data" />
- </form>
+ <h1>Aplikasi Pendataan Inventaris</h1>
+ <p>Silahkan memasukkan data inventaris melalui kolom berikut.</p>
+<table>
+     <tr>
+        <td>Nama Barang</td>
+        <td>Jumlah Barang</td>
+     </tr>
+     <tr>
+        <form method="post" action="index.php" enctype="multipart/form-data">
+            <td><input type="text" name="name" id="name"/></td>
+            <td><input type="number" name="qty" id="qty"/></td>
+            <td><input type="submit" name="submit" value="Submit" /></td>
+            <td><input type="submit" name="load_data" value="Load Data" /></td>
+        </form>
+     </tr>
+</table>
  <?php
     $host = "rifazures.database.windows.net";
     $user = "waynerog";
     $pass = "Alkmenes1197";
-    $db = "Pendaftaran";
+    $db = "inventaris";
+
     try {
         $conn = new PDO("sqlsrv:server = $host; Database = $db", $user, $pass);
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
     } catch(Exception $e) {
         echo "Failed: " . $e;
     }
+
     if (isset($_POST['submit'])) {
         try {
             $name = $_POST['name'];
-            $email = $_POST['email'];
-            $job = $_POST['job'];
+            $qty = $_POST['qty'];
             $date = date("Y-m-d");
             // Insert data
-            $sql_insert = "INSERT INTO Penggunas (Nama, Email, Pekerjaan, Tanggal) 
-                        VALUES (?,?,?,?)";
+            $sql_insert = "INSERT INTO barang (id_barang, nama_barang, jumlah_barang, tanggal_masuk) 
+                        VALUES ('',$name,$qty,$date)";
             $stmt = $conn->prepare($sql_insert);
-            $stmt->bindValue(1, $name);
-            $stmt->bindValue(2, $email);
-            $stmt->bindValue(3, $job);
-            $stmt->bindValue(4, $date);
             $stmt->execute();
         } catch(Exception $e) {
             echo "Failed: " . $e;
         }
+
         echo "<h3>Your're registered!</h3>";
     } else if (isset($_POST['load_data'])) {
         try {
-            $sql_select = "SELECT * FROM Penggunas";
+            $sql_select = "SELECT * FROM inventaris";
             $stmt = $conn->query($sql_select);
             $registrants = $stmt->fetchAll(); 
             if(count($registrants) > 0) {
-                echo "<h2>People who are registered:</h2>";
+                echo "<h2>Data inventaris yang telah masuk :</h2>";
                 echo "<table>";
-                echo "<tr><th>Name</th>";
-                echo "<th>Email</th>";
-                echo "<th>Job</th>";
-                echo "<th>Date</th></tr>";
+                echo "<tr><th>ID Barang</th>";
+                echo "<th>Nama Barang</th>";
+                echo "<th>Jumlah Barang</th>";
+                echo "<th>Tanggal Masuk</th>";
                 foreach($registrants as $registrant) {
-                    echo "<tr><td>".$registrant['Nama']."</td>";
-                    echo "<td>".$registrant['Email']."</td>";
-                    echo "<td>".$registrant['Pekerjaan']."</td>";
-                    echo "<td>".$registrant['Tanggal']."</td></tr>";
+                    echo "<tr><td>".$registrant['id_barang']."</td>";
+                    echo "<td>".$registrant['nama_barang']."</td>";
+                    echo "<td>".$registrant['jumlah_barang']."</td>";
+                    echo "<td>".$registrant['tanggal_masuk']."</td>";
                 }
                 echo "</table>";
             } else {
-                echo "<h3>No one is currently registered.</h3>";
+                echo "<h3>Belum ada data inventaris yang dimasukkan.</h3>";
             }
         } catch(Exception $e) {
             echo "Failed: " . $e;
@@ -83,4 +88,4 @@
     }
  ?>
  </body>
-</html>
+ </html>
