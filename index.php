@@ -38,7 +38,7 @@
  <?php
     $host = "rifazures.database.windows.net";
     $user = "waynerog";
-    $pass = "Alkmenes1197";
+    $pass = "";
     $db = "inventaris";
 
     try {
